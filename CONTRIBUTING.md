@@ -15,7 +15,7 @@ Thank you for your interest in contributing! We welcome all contributions — bu
 ## Development Setup
 
 ```bash
-git clone https://github.com/musictechlab/mtl-ddex-vscode-helper.git
+git clone https://github.com/msmenzyk/mtl-ddex-vscode-helper.git
 cd mtl-ddex-vscode-helper
 npm install
 ```
