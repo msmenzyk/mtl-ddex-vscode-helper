@@ -1,7 +1,7 @@
 {
   "name": "mtl-ddex-vscode-helper",
   "displayName": "MTL DDEX Helper",
-  "publisher": "musictechlab",
+  "publisher": "Mariusz Smenżyk",
   "description": "Jump to DDEX XML tag documentation and tooling for ERN/MWDR/MLC.",
   "version": "0.2.6",
   "engines": {
@@ -25,12 +25,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/musictechlab/mtl-ddex-vscode-helper"
+    "url": "https://github.com/msmenzyk/mtl-ddex-vscode-helper"
   },
   "bugs": {
-    "url": "https://github.com/musictechlab/mtl-ddex-vscode-helper/issues"
+    "url": "https://github.com/msmenzyk/mtl-ddex-vscode-helper/issues"
   },
-  "homepage": "https://github.com/musictechlab/mtl-ddex-vscode-helper#readme",
+  "homepage": "https://github.com/msmenzyk/mtl-ddex-vscode-helper#readme",
   "main": "./out/extension.js",
   "activationEvents": [
     "onStartupFinished",

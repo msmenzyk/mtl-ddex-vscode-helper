@@ -1,4 +1,4 @@
-OWNER=musictechlab
+OWNER=Mariusz Smenżyk
 REPO=mtl-ddex-vscode-helper
 BRANCH=main
 

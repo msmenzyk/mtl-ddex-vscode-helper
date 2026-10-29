@@ -21,29 +21,34 @@ from bs4 import BeautifulSoup
 from pathlib import Path
 from collections import deque
 
-USER_AGENT = "MusicTechLab-DDexScraper/1.2"
+USER_AGENT = "Mariusz Smenżyk-DDexScraper/1.2"
 
 SEEDS = [
     "https://ern.ddex.net/",
     "https://service.ddex.net/dd/ERN38/",
-    "https://ddex.net/standards/"
+    "https://ddex.net/standards/",
 ]
 
 ALLOWED_DOMAINS = ("ern.ddex.net", "service.ddex.net", "ddex.net")
 
-MAX_PAGES   = 1000     # hard cap for safety
-MAX_DEPTH   = 5        # <— crawl recursively up to this depth
+MAX_PAGES = 1000  # hard cap for safety
+MAX_DEPTH = 5  # <— crawl recursively up to this depth
 SLEEP_BETWEEN = 0.5
 CHECK_TIMEOUT = 8
 
 DOMAIN_PRIORITY = {"ern.ddex.net": 3, "service.ddex.net": 2, "ddex.net": 1}
 
+
 # ───────────────────────────────────────────────────────────────
 def same_domain(url: str) -> bool:
     try:
-        return any(urllib.parse.urlparse(url).netloc.lower().endswith(d) for d in ALLOWED_DOMAINS)
+        return any(
+            urllib.parse.urlparse(url).netloc.lower().endswith(d)
+            for d in ALLOWED_DOMAINS
+        )
     except Exception:
         return False
+
 
 def normalize_url(base: str, href: str) -> str:
     try:
@@ -53,6 +58,7 @@ def normalize_url(base: str, href: str) -> str:
     except Exception:
         return ""
 
+
 def fetch(url: str) -> str | None:
     try:
         r = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=15)
@@ -61,6 +67,7 @@ def fetch(url: str) -> str | None:
     except Exception:
         pass
     return None
+
 
 def extract_links(base_url: str, html: str):
     soup = BeautifulSoup(html, "html.parser")
@@ -76,34 +83,46 @@ def extract_links(base_url: str, html: str):
             text_parts.append(txt[:300])
     return links, "\n".join(text_parts)
 
+
 def score(url: str, text: str, tag: str) -> int:
     d = urllib.parse.urlparse(url).netloc.lower()
     s = DOMAIN_PRIORITY.get(d, 0) * 100
     if tag.lower() in url.lower():
         s += 20
-    occ = len(re.findall(fr"\b{re.escape(tag)}\b", text))
+    occ = len(re.findall(rf"\b{re.escape(tag)}\b", text))
     s += min(occ, 5) * 10
     return s
+
 
 def check_url_alive(url: str) -> bool:
     if not url or not url.startswith("http"):
         return False
     try:
-        r = requests.head(url, headers={"User-Agent": USER_AGENT}, allow_redirects=True, timeout=CHECK_TIMEOUT)
+        r = requests.head(
+            url,
+            headers={"User-Agent": USER_AGENT},
+            allow_redirects=True,
+            timeout=CHECK_TIMEOUT,
+        )
         if r.status_code in (200, 301, 302):
             return True
         if r.status_code == 405:  # some sites block HEAD
-            r2 = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=CHECK_TIMEOUT)
+            r2 = requests.get(
+                url, headers={"User-Agent": USER_AGENT}, timeout=CHECK_TIMEOUT
+            )
             return r2.status_code == 200
     except Exception:
         return False
     return False
 
+
 # ───────────────────────────────────────────────────────────────
 # Depth-limited BFS crawl
 def crawl(tags: list[str]):
     visited: set[str] = set()
-    queue: deque[tuple[str, int]] = deque((seed, 0) for seed in dict.fromkeys(SEEDS))  # unique seeds, depth 0
+    queue: deque[tuple[str, int]] = deque(
+        (seed, 0) for seed in dict.fromkeys(SEEDS)
+    )  # unique seeds, depth 0
     pages = 0
     best_for_tag: dict[str, tuple[int, str]] = {}  # tag -> (score, url)
 
@@ -123,7 +142,7 @@ def crawl(tags: list[str]):
 
         # scoring
         for t in tags:
-            if re.search(fr"\b{re.escape(t)}\b", text):
+            if re.search(rf"\b{re.escape(t)}\b", text):
                 sc = score(url, text, t)
                 if t not in best_for_tag or sc > best_for_tag[t][0]:
                     best_for_tag[t] = (sc, url)
@@ -137,6 +156,7 @@ def crawl(tags: list[str]):
         time.sleep(SLEEP_BETWEEN)
 
     return {t: u for t, (_, u) in best_for_tag.items()}
+
 
 # ───────────────────────────────────────────────────────────────
 def main():
@@ -172,6 +192,7 @@ def main():
 
     out.write_text(json.dumps(updated, indent=2), encoding="utf-8")
     print(f"✅ Updated map saved to {out}")
+
 
 if __name__ == "__main__":
     main()

@@ -1,16 +1,15 @@
 # 🎵 MTL DDEX Helper
 
-[![Version](https://img.shields.io/visual-studio-marketplace/v/musictechlab.mtl-ddex-vscode-helper)](https://marketplace.visualstudio.com/items?itemName=musictechlab.mtl-ddex-vscode-helper)
-[![Installs](https://img.shields.io/visual-studio-marketplace/i/musictechlab.mtl-ddex-vscode-helper)](https://marketplace.visualstudio.com/items?itemName=musictechlab.mtl-ddex-vscode-helper)
-[![Rating](https://img.shields.io/visual-studio-marketplace/r/musictechlab.mtl-ddex-vscode-helper)](https://marketplace.visualstudio.com/items?itemName=musictechlab.mtl-ddex-vscode-helper)
-[![Built by MusicTech Lab](https://musictechlab.io/oss/build-by-musictechlab.io.svg)](https://musictechlab.io)
+[![Version](https://img.shields.io/visual-studio-marketplace/v/Mariusz Smenżyk.mtl-ddex-vscode-helper)](https://marketplace.visualstudio.com/items?itemName=Mariusz Smenżyk.mtl-ddex-vscode-helper)
+[![Installs](https://img.shields.io/visual-studio-marketplace/i/Mariusz Smenżyk.mtl-ddex-vscode-helper)](https://marketplace.visualstudio.com/items?itemName=Mariusz Smenżyk.mtl-ddex-vscode-helper)
+[![Rating](https://img.shields.io/visual-studio-marketplace/r/Mariusz Smenżyk.mtl-ddex-vscode-helper)](https://marketplace.visualstudio.com/items?itemName=Mariusz Smenżyk.mtl-ddex-vscode-helper)
 
 **MTL DDEX Helper** is a VS Code extension that makes working with **DDEX XML metadata** (ERN, MWDR, MLC, Party ID, etc.) faster and easier.  
 It integrates directly with the **Red Hat XML** language server to provide **live XSD validation**, documentation hovers, and schema helpers.
 
 ![MTL DDEX Helper Screenshot](assets/images/screenshot.png)
 
-**[Install from VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=musictechlab.mtl-ddex-vscode-helper)**
+**[Install from VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=Mariusz Smenżyk.mtl-ddex-vscode-helper)**
 
 ---
 
@@ -109,7 +108,7 @@ the [ReleaseList documentation](https://support.google.com/youtube/answer/350611
 - [DDEX Official Site](https://ddex.net)  
 - [Red Hat XML Extension](https://marketplace.visualstudio.com/items?itemName=redhat.vscode-xml)  
 - [VS Code Extension API](https://code.visualstudio.com/api)  
-- [MusicTech Lab](https://musictechlab.io)
+- [Mariusz Smenżyk](https://mtl.dev)
 
 ---
 
@@ -123,16 +122,16 @@ To report a vulnerability, please see [SECURITY.md](SECURITY.md).
 
 ## License
 
-MIT License — © 2025 MusicTech Lab — see [LICENSE](LICENSE) for details.
+MIT License — © 2025 Mariusz Smenżyk — see [LICENSE](LICENSE) for details.
 
 ---
 
 <div align="center">
-  MusicTech Lab - Rockstars Developers dedicated to the Music Industry<br>
-  <a href="https://musictechlab.io">Website</a>
+  Mariusz Smenżyk - Rockstars Developers dedicated to the Music Industry<br>
+  <a href="https://mtl.dev">Website</a>
   <span> | </span>
-  <a href="https://linkedin.com/company/musictechlab">LinkedIn</a>
+  <a href="https://linkedin.com/company/Mariusz Smenżyk">LinkedIn</a>
   <span> | </span>
-  <a href="https://musictechlab.io/contact">Let's talk</a><br>
-  Crafted by <a href="https://musictechlab.io">musictechlab.io</a>
+  <a href="https://mtl.dev/contact">Let's talk</a><br>
+  Crafted by <a href="https://mtl.dev">mtl.dev</a>
 </div>
